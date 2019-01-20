@@ -21,7 +21,10 @@ import javax.swing.JTextPane;
 
 public class UserInterface {
 	private JFrame mainFrame;
+	/*********
+		!!! NEPOTREBAN !!!!
 	
+	******/
 	public UserInterface() {
 		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
 		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
