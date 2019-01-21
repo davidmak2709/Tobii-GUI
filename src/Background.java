@@ -25,6 +25,9 @@ public class Background extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Image image;
+	private JTextArea textPane;
+	private JButton backButton;
+	private JButton nextButton;
 	
 	public Background() {
 		// TODO Auto-generated constructor stub
@@ -38,7 +41,7 @@ public class Background extends JPanel {
 			e.printStackTrace();
 		}
 		
-		JButton backButton = new JButton(new ImageIcon(image));
+		backButton = new JButton(new ImageIcon(image));
 		backButton.setOpaque(false);
 		backButton.setBorderPainted(false);
 		backButton.setContentAreaFilled(false);
@@ -49,7 +52,7 @@ public class Background extends JPanel {
 		
 		
 		
-		JTextArea textPane = new JTextArea();
+		textPane = new JTextArea();
 		
 		textPane.setEditable(false);
 		textPane.setBackground(new Color(255, 253, 221));
@@ -61,6 +64,7 @@ public class Background extends JPanel {
 		JScrollPane scrollPane = new JScrollPane(textPane); 
 		scrollPane.setMaximumSize(new Dimension(1200,450));
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
+		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(35, 35));;
 		
 		JPanel panelText = new JPanel();
 		panelText.setLayout(new BoxLayout(panelText, BoxLayout.LINE_AXIS));
@@ -78,7 +82,7 @@ public class Background extends JPanel {
 		}
 		
 		
-		JButton nextButton = new JButton(new ImageIcon(image));
+		nextButton = new JButton(new ImageIcon(image));
 		nextButton.setOpaque(false);
 		nextButton.setBorderPainted(false);
 		nextButton.setContentAreaFilled(false);
@@ -105,5 +109,18 @@ public class Background extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    }
+    
+    public JButton getNextButton() {
+    	return nextButton;
+    }
+    
+    public JButton getBackButton() {
+    	return backButton;
+    }
+    
+    public void setTextAreaText(String newText) {
+    	this.textPane.setText(newText);
+    	this.textPane.setCaretPosition(0);
     }
 }

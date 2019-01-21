@@ -18,6 +18,7 @@ public class GUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private Background panel;
 
 
 	/**
@@ -37,7 +38,7 @@ public class GUI extends JFrame {
 		splitPane.setResizeWeight(1.0);
 		contentPane.add(splitPane);
 		
-		Background panel = new Background();
+		panel = new Background();
 		panel.setMinimumSize(new Dimension(getWidth(), (int) (getHeight() * 0.8)));
 		splitPane.setTopComponent(panel);
 
@@ -62,6 +63,14 @@ public class GUI extends JFrame {
 		
 		pack();
 		setVisible(true);
+	}
+	
+	public Background getPanel() {
+		return panel;
+	}
+	
+	public void setTextAreaText(String newText) {
+		panel.setTextAreaText(newText);
 	}
 
 }
