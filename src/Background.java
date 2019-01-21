@@ -42,6 +42,7 @@ public class Background extends JPanel {
 		backButton.setOpaque(false);
 		backButton.setBorderPainted(false);
 		backButton.setContentAreaFilled(false);
+		backButton.addMouseListener(new BackButtonListener());
 
 		
 		add(backButton,BorderLayout.WEST);
@@ -82,6 +83,7 @@ public class Background extends JPanel {
 		nextButton.setBorderPainted(false);
 		nextButton.setContentAreaFilled(false);
 		nextButton.setFocusPainted(false);
+		nextButton.addMouseListener(new NextButtonListener());
 
 		add(nextButton,BorderLayout.EAST);
 	}
