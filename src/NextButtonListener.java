@@ -18,13 +18,12 @@ public class NextButtonListener implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
 		JButton btn = (JButton) e.getSource();
 		
 		Image image = null;
 		try {
 			image = ImageIO.read(new File("./res/arrow_next_clicked.png"));
-			image = image.getScaledInstance(90, 130, Image.SCALE_SMOOTH);
+			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();
@@ -41,7 +40,7 @@ public class NextButtonListener implements MouseListener {
 		Image image = null;
 		try {
 			image = ImageIO.read(new File("./res/arrow_next.png"));
-			image = image.getScaledInstance(90, 130, Image.SCALE_SMOOTH);
+			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();
@@ -59,7 +58,7 @@ public class NextButtonListener implements MouseListener {
 		Image image = null;
 		try {
 			image = ImageIO.read(new File("./res/arrow_next_selected.png"));
-			image = image.getScaledInstance(90, 130, Image.SCALE_SMOOTH);
+			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
 			ex.printStackTrace();
