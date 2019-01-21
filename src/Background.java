@@ -89,14 +89,14 @@ public class Background extends JPanel {
 		JTextArea textPane = new JTextArea();
 		
 		textPane.setEditable(false);
-//		textPane.setBackground(new Color(255, 253, 221));
-		textPane.setBackground(Color.YELLOW);
+		textPane.setBackground(new Color(255, 253, 221));
+//		textPane.setBackground(Color.YELLOW);
 		textPane.setWrapStyleWord(true);
 		textPane.setLineWrap(true);
 		textPane.setFont(new Font("TimesRoman", Font.BOLD, 16));
 		
 		scrollPane = new JScrollPane(textPane);
-		scrollPane.setMaximumSize(new Dimension(1200,450));
+		scrollPane.setMaximumSize(new Dimension(1200,420));
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
 		
 		JPanel panelText = new JPanel();
@@ -115,7 +115,7 @@ public class Background extends JPanel {
         super.paintComponent(g);
         this.getImage();
         setOpaque(false);
-        g.drawImage(image, 0, 30, this);
+        g.drawImage(image, -5, 30, this);
     }
     
     private void getImage() {
