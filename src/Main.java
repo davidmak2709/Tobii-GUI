@@ -5,10 +5,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		FileHandler fileHandler = new FileHandler(FileChooser.selectFile());
+		GUI gui = new GUI();
+		
 		if(fileHandler.getSelectedFile() != null) {
 			fileHandler.file();
-			GUI gui = new GUI();
+
+			System.out.println(fileHandler.getSelectedFile().getAbsolutePath());
+			
 			gui.setTextAreaText(fileHandler.getText());
+		
 			gui.getPanel().getBackButton().addActionListener(new ActionListener() {
 
 				@Override
@@ -18,6 +23,7 @@ public class Main {
 				}
 				
 			});
+			
 			
 			gui.getPanel().getNextButton().addActionListener(new ActionListener() {
 

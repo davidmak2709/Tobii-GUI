@@ -28,6 +28,7 @@ public class Background extends JPanel {
 	private JTextArea textPane;
 	private JButton backButton;
 	private JButton nextButton;
+	private JScrollPane scrollPane;
 	
 	public Background() {
 		// TODO Auto-generated constructor stub		
@@ -71,7 +72,7 @@ public class Background extends JPanel {
 		}
 		
 		
-		JButton nextButton = new JButton(new ImageIcon(image));
+		nextButton = new JButton(new ImageIcon(image));
 		nextButton.setOpaque(false);
 		nextButton.setBorderPainted(false);
 		nextButton.setContentAreaFilled(false);
