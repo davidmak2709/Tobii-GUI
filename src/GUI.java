@@ -61,7 +61,7 @@ public class GUI extends JFrame {
 		splitPane.setBottomComponent(panel_tit);
 		
 		pack();
-		setVisible(true);
+
 	}
 
 }

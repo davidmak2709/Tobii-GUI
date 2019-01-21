@@ -25,14 +25,19 @@ public class Background extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Image image;
+	private JScrollPane scrollPane;
 	
 	public Background() {
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub		
+		
 		setLayout(new BorderLayout(30,0));
 		Image image = null;
+		
+		/*** PREV BUTTON  ***/
+		
 		try {
 			image = ImageIO.read(new File("./res/arrow_back.png"));
-			image = image.getScaledInstance(90, 130, Image.SCALE_SMOOTH);
+			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,36 +47,22 @@ public class Background extends JPanel {
 		backButton.setOpaque(false);
 		backButton.setBorderPainted(false);
 		backButton.setContentAreaFilled(false);
+		backButton.setFocusPainted(false);
 		backButton.addMouseListener(new BackButtonListener());
 
 		
-		add(backButton,BorderLayout.WEST);
+		JPanel backButtonPanel = new JPanel();
+		backButtonPanel.setLayout(new BoxLayout(backButtonPanel, BoxLayout.X_AXIS));
+		backButtonPanel.setOpaque(false);
+		backButtonPanel.add(backButton);
+		add(backButtonPanel,BorderLayout.WEST);
 		
+		/*** NEXT BUTTON  ***/
 		
-		
-		JTextArea textPane = new JTextArea();
-		
-		textPane.setEditable(false);
-		textPane.setBackground(new Color(255, 253, 221));
-//		textPane.setBackground(Color.YELLOW);
-		textPane.setWrapStyleWord(true);
-		textPane.setLineWrap(true);
-		textPane.setFont(new Font("TimesRoman", Font.BOLD, 16));
-		
-		JScrollPane scrollPane = new JScrollPane(textPane); 
-		scrollPane.setMaximumSize(new Dimension(1200,450));
-		scrollPane.setBorder(BorderFactory.createEmptyBorder());
-		
-		JPanel panelText = new JPanel();
-		panelText.setLayout(new BoxLayout(panelText, BoxLayout.LINE_AXIS));
-		panelText.setOpaque(false);
-		panelText.add(scrollPane);
-		
-		add(panelText,BorderLayout.CENTER);
 		
 		try {
 			image = ImageIO.read(new File("./res/arrow_next.png"));
-			image = image.getScaledInstance(90, 130, Image.SCALE_SMOOTH);
+			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +76,37 @@ public class Background extends JPanel {
 		nextButton.setFocusPainted(false);
 		nextButton.addMouseListener(new NextButtonListener());
 
-		add(nextButton,BorderLayout.EAST);
+		JPanel nextButtonPanel = new JPanel();
+		nextButtonPanel.setLayout(new BoxLayout(nextButtonPanel, BoxLayout.X_AXIS));
+		nextButtonPanel.setOpaque(false);
+		nextButtonPanel.add(nextButton);
+		
+		add(nextButtonPanel,BorderLayout.EAST);
+		
+		
+		/*** TEXT PANE ***/
+		
+		JTextArea textPane = new JTextArea();
+		
+		textPane.setEditable(false);
+//		textPane.setBackground(new Color(255, 253, 221));
+		textPane.setBackground(Color.YELLOW);
+		textPane.setWrapStyleWord(true);
+		textPane.setLineWrap(true);
+		textPane.setFont(new Font("TimesRoman", Font.BOLD, 16));
+		
+		scrollPane = new JScrollPane(textPane);
+		scrollPane.setMaximumSize(new Dimension(1200,450));
+		scrollPane.setBorder(BorderFactory.createEmptyBorder());
+		
+		JPanel panelText = new JPanel();
+		panelText.setLayout(new BoxLayout(panelText, BoxLayout.X_AXIS));
+		panelText.setOpaque(false);
+		panelText.add(scrollPane);
+		
+		add(panelText,BorderLayout.CENTER);
+		
+
 	}
 	
 	
@@ -100,10 +121,12 @@ public class Background extends JPanel {
     private void getImage() {
     	try {
 			this.image = ImageIO.read(new File("./res/book.png"));
-			this.image = this.image.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT);
+			this.image = this.image.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
+
     }
 }
