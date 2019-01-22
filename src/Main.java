@@ -10,8 +10,6 @@ public class Main {
 		if(fileHandler.getSelectedFile() != null) {
 			fileHandler.file();
 
-			System.out.println(fileHandler.getSelectedFile().getAbsolutePath());
-			
 			gui.setTextAreaText(fileHandler.getText());
 		
 			gui.getPanel().getBackButton().addActionListener(new ActionListener() {

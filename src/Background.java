@@ -101,7 +101,8 @@ public class Background extends JPanel {
 		scrollPane = new JScrollPane(textPane);
 		scrollPane.setMaximumSize(new Dimension(1200,420));
 		scrollPane.setBorder(BorderFactory.createEmptyBorder());
-		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(35, 35));;
+		scrollPane.getVerticalScrollBar().setUI(new ScrollBarUI());
+		scrollPane.getVerticalScrollBar().setPreferredSize(new Dimension(35, 35));
 		
 		JPanel panelText = new JPanel();
 		panelText.setLayout(new BoxLayout(panelText, BoxLayout.X_AXIS));
@@ -143,7 +144,7 @@ public class Background extends JPanel {
     }
     
     public void setTextAreaText(String newText) {
-    	this.textPane.setText(newText);
+    	this.textPane.setText(newText.replace("\n", " "));
     	this.textPane.setCaretPosition(0);
     }
 }
