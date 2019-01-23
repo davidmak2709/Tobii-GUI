@@ -143,6 +143,10 @@ public class Background extends JPanel {
     	return backButton;
     }
     
+    public JTextArea getTextPane() {
+		return textPane;
+	}
+    
     public void setTextAreaText(String newText) {
     	this.textPane.setText(newText.replace("\n", " "));
     	this.textPane.setCaretPosition(0);

@@ -17,6 +17,7 @@ public class Main {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					fileHandler.decrementPage();
+					gui.setIter();
 					gui.setTextAreaText(fileHandler.getText());
 				}
 				
@@ -28,10 +29,13 @@ public class Main {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					fileHandler.incrementPage();
+					gui.setIter();
 					gui.setTextAreaText(fileHandler.getText());
 				}
 				
 			});
+			
+			gui.setHighlighter();
 		}
 		
 		//new GUI();

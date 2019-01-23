@@ -2,10 +2,13 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextPane;
@@ -18,8 +21,12 @@ public class GUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextPane subtitlePane;
 	private Background panel;
-
+	private String[] array;
+	private Thread thread;
+	private Reader reader;
+	Queue<String> queue = new ConcurrentLinkedQueue<>();
 
 	/**
 	 * Create the frame.
@@ -43,16 +50,15 @@ public class GUI extends JFrame {
 		splitPane.setTopComponent(panel);
 
 		
-		JLabel label = new JLabel("Započni s čitanjem");
-		label.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 		
-		JTextPane subtitlePane = new JTextPane();
+		subtitlePane = new JTextPane();
 		subtitlePane.setLayout(new GridBagLayout());
 		subtitlePane.setMinimumSize(new Dimension((int) (getWidth()*0.7), (int) (getHeight()*0.1)));
 		subtitlePane.setMaximumSize(new Dimension((int) (getWidth()*0.7), (int) (getHeight()*0.1)));
 		subtitlePane.setEditable(false);
 		subtitlePane.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-		subtitlePane.add(label);
+		subtitlePane.setContentType("text/html");
+		subtitlePane.setText("<html><center><b><font size=30>Započni s čitanjem</font></b></center></html>");
 		
 		JPanel panel_tit = new JPanel();
 		panel_tit.setLayout(new BoxLayout(panel_tit,BoxLayout.Y_AXIS));
@@ -71,6 +77,60 @@ public class GUI extends JFrame {
 	
 	public void setTextAreaText(String newText) {
 		panel.setTextAreaText(newText);
+		
+		array = panel.getTextPane().getText().split(" ");
+		for(String s : array) {
+			queue.add(s);
+		}
+
+		panel.getTextPane().setCaretPosition(0);
+	}
+	
+	public void setHighlighter() {
+		
+		reader =  new Reader(queue, subtitlePane, panel.getTextPane());			           
+		thread = new Thread(reader);
+		thread.start();
+		  
+		subtitlePane.addMouseListener(new MouseListener() {
+					
+					@Override
+					public void mouseReleased(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mousePressed(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mouseExited(MouseEvent e) {
+						// TODO Auto-generated method stub
+						reader.doStop();
+
+					}
+					
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						// TODO Auto-generated method stub	
+						reader.doStart();
+						
+					}
+					
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+
+}
+	
+	public void setIter() {
+		reader.emptyQueue();
 	}
 
 }
