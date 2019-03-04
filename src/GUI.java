@@ -22,6 +22,7 @@ public class GUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JTextPane subtitlePane;
 	private Background panel;
 	
 	private String[] array;
@@ -56,13 +57,14 @@ public class GUI extends JFrame {
 		JLabel label = new JLabel("Započni s čitanjem");
 		label.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 		
-		JTextPane subtitlePane = new JTextPane();
+		subtitlePane = new JTextPane();
 		subtitlePane.setLayout(new GridBagLayout());
 		subtitlePane.setMinimumSize(new Dimension((int) (getWidth()*0.7), (int) (getHeight()*0.1)));
 		subtitlePane.setMaximumSize(new Dimension((int) (getWidth()*0.7), (int) (getHeight()*0.1)));
 		subtitlePane.setEditable(false);
 		subtitlePane.setFont(new Font("TimesRoman", Font.PLAIN, 30));
-		subtitlePane.add(label);
+		subtitlePane.setContentType("text/html");
+		subtitlePane.setText("<html><center><b><font size=30>Započni s čitanjem</font></b></center></html>");
 		
 		JPanel panel_tit = new JPanel();
 		panel_tit.setLayout(new BoxLayout(panel_tit,BoxLayout.Y_AXIS));
@@ -75,13 +77,28 @@ public class GUI extends JFrame {
 		setVisible(true);
 	}
 	
+	public Background getPanel() {
+		return panel;
+	}
+	
+	public void setTextAreaText(String newText) {
+		panel.setTextAreaText(newText);
+		
+		array = panel.getTextPane().getText().split(" ");
+		for(String s : array) {
+			queue.add(s);
+		}
+
+		panel.getTextPane().setCaretPosition(0);
+	}
+	
 	public void setHighlighter() {
 		
-		reader =  new Reader(queue, textSubtitle, textPane);			           
+		reader =  new Reader(queue, subtitlePane, panel.getTextPane());			           
 		thread = new Thread(reader);
 		thread.start();
 		  
-		this.textSubtitle.addMouseListener(new MouseListener() {
+		subtitlePane.addMouseListener(new MouseListener() {
 					
 					@Override
 					public void mouseReleased(MouseEvent e) {
@@ -116,13 +133,10 @@ public class GUI extends JFrame {
 					}
 				});
 
+}
 	
-	public Background getPanel() {
-		return panel;
-	}
-	
-	public void setTextAreaText(String newText) {
-		panel.setTextAreaText(newText);
+	public void setIter() {
+		reader.emptyQueue();
 	}
 
 }

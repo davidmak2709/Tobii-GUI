@@ -15,6 +15,7 @@ public class Main {
 			gui.getPanel().getBackButton().addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					fileHandler.decrementPage();
+					gui.setIter();
 					gui.setTextAreaText(fileHandler.getText());
 				}
 				
@@ -25,10 +26,13 @@ public class Main {
 
 				public void actionPerformed(ActionEvent e) {
 					fileHandler.incrementPage();
+					gui.setIter();
 					gui.setTextAreaText(fileHandler.getText());
 				}
 				
 			});
+			
+			gui.setHighlighter();
 		}
 		
 		//new GUI();
