@@ -28,7 +28,7 @@ public class GUI extends JFrame {
 	private String[] array;
 	private Thread thread;
 	private int iter = 0;
-	private Reader reader;
+	private Reader reader = null;
 	Queue<String> queue = new ConcurrentLinkedQueue<>();
 
 
@@ -94,7 +94,7 @@ public class GUI extends JFrame {
 	
 	public void setHighlighter() {
 		
-		reader =  new Reader(queue, subtitlePane, panel.getTextPane());			           
+		reader =  new Reader(queue, subtitlePane, panel.getTextPane());	           
 		thread = new Thread(reader);
 		thread.start();
 		  
@@ -136,7 +136,9 @@ public class GUI extends JFrame {
 }
 	
 	public void setIter() {
-		reader.emptyQueue();
+		if(reader != null) {
+			reader.emptyQueue();
+		}
 	}
 
 }

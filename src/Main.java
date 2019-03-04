@@ -9,7 +9,7 @@ public class Main {
 		
 		if(fileHandler.getSelectedFile() != null) {
 			fileHandler.file();
-
+			gui.setHighlighter();
 			gui.setTextAreaText(fileHandler.getText());
 		
 			gui.getPanel().getBackButton().addActionListener(new ActionListener() {
@@ -28,11 +28,12 @@ public class Main {
 					fileHandler.incrementPage();
 					gui.setIter();
 					gui.setTextAreaText(fileHandler.getText());
+					
 				}
 				
 			});
 			
-			gui.setHighlighter();
+			
 		}
 		
 		//new GUI();
