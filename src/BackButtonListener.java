@@ -11,13 +11,11 @@ import javax.swing.JButton;
 
 public class BackButtonListener implements MouseListener{
 
-	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		JButton btn = (JButton) e.getSource();
@@ -34,7 +32,6 @@ public class BackButtonListener implements MouseListener{
 		btn.setIcon(new ImageIcon(image));
 	}
 
-	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		JButton btn = (JButton) e.getSource();
@@ -51,7 +48,6 @@ public class BackButtonListener implements MouseListener{
 		btn.setIcon(new ImageIcon(image));
 	}
 
-	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		JButton btn = (JButton) e.getSource();
@@ -69,7 +65,6 @@ public class BackButtonListener implements MouseListener{
 		
 	}
 
-	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
