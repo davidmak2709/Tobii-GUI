@@ -1,6 +1,5 @@
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -23,7 +22,7 @@ public class BackgroundMain extends JSplitPane {
     
     private void getImage() {
     	try {
-			this.image = ImageIO.read(new File("./res//background.jpg"));
+			this.image = ImageIO.read(BackgroundMain.class.getResource("/res/background.jpg"));
 			this.image = this.image.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

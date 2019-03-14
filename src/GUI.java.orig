@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextPane;
@@ -24,13 +23,20 @@ public class GUI extends JFrame {
 	private JPanel contentPane;
 	private JTextPane subtitlePane;
 	private Background panel;
+<<<<<<< HEAD
 	
 	private String[] array;
 	private Thread thread;
 	private int iter = 0;
-	private Reader reader = null;
+	private Reader reader;
 	Queue<String> queue = new ConcurrentLinkedQueue<>();
 
+=======
+	private String[] array;
+	private Thread thread;
+	private Reader reader;
+	Queue<String> queue = new ConcurrentLinkedQueue<>();
+>>>>>>> 165ce58b4b0a35fb931a7cbeb31161517de71a7e
 
 	/**
 	 * Create the frame.
@@ -54,8 +60,6 @@ public class GUI extends JFrame {
 		splitPane.setTopComponent(panel);
 
 		
-		JLabel label = new JLabel("Započni s čitanjem");
-		label.setFont(new Font("TimesRoman", Font.PLAIN, 30));
 		
 		subtitlePane = new JTextPane();
 		subtitlePane.setLayout(new GridBagLayout());
@@ -77,6 +81,48 @@ public class GUI extends JFrame {
 		setVisible(true);
 	}
 	
+	public void setHighlighter() {
+		
+		reader =  new Reader(queue, textSubtitle, textPane);			           
+		thread = new Thread(reader);
+		thread.start();
+		  
+		this.textSubtitle.addMouseListener(new MouseListener() {
+					
+					@Override
+					public void mouseReleased(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mousePressed(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void mouseExited(MouseEvent e) {
+						// TODO Auto-generated method stub
+						reader.doStop();
+
+					}
+					
+					@Override
+					public void mouseEntered(MouseEvent e) {
+						// TODO Auto-generated method stub	
+						reader.doStart();
+						
+					}
+					
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+
+	
 	public Background getPanel() {
 		return panel;
 	}
@@ -94,7 +140,7 @@ public class GUI extends JFrame {
 	
 	public void setHighlighter() {
 		
-		reader =  new Reader(queue, subtitlePane, panel.getTextPane());	           
+		reader =  new Reader(queue, subtitlePane, panel.getTextPane());			           
 		thread = new Thread(reader);
 		thread.start();
 		  
@@ -136,9 +182,7 @@ public class GUI extends JFrame {
 }
 	
 	public void setIter() {
-		if(reader != null) {
-			reader.emptyQueue();
-		}
+		reader.emptyQueue();
 	}
 
 }
