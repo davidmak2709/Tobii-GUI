@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -50,7 +49,7 @@ public class ScrollBarUI extends BasicScrollBarUI {
 	  switch(orientation){
           case SwingConstants.SOUTH: 
 		  	try {
-		  		image = ImageIO.read(new File("./res/arrow_down.png"));
+		  		image = ImageIO.read(ScrollBarUI.class.getResource("/res/arrow_down.png"));
       			image = image.getScaledInstance(25, 20, Image.SCALE_FAST);
   		  } catch (IOException e) {
       			e.printStackTrace();
@@ -59,7 +58,7 @@ public class ScrollBarUI extends BasicScrollBarUI {
               
           case SwingConstants.NORTH: 
 		  	try {
-		  		image = ImageIO.read(new File("./res/arrow_up.png"));
+		  		image = ImageIO.read(ScrollBarUI.class.getResource("/res/arrow_up.png"));
     			image = image.getScaledInstance(25, 20, Image.SCALE_FAST);
 		  } catch (IOException e) {
 			  	e.printStackTrace();

@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -39,7 +38,7 @@ public class Background extends JPanel {
 		/*** PREV BUTTON  ***/
 		
 		try {
-			image = ImageIO.read(new File("./res/arrow_back.png"));
+			image = ImageIO.read(Background.class.getResource("/res/arrow_back.png"));
 			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -64,7 +63,7 @@ public class Background extends JPanel {
 		
 		
 		try {
-			image = ImageIO.read(new File("./res/arrow_next.png"));
+			image = ImageIO.read(Background.class.getResource("/res/arrow_next.png"));
 			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -125,7 +124,7 @@ public class Background extends JPanel {
     
     private void getImage() {
     	try {
-			this.image = ImageIO.read(new File("./res/book.png"));
+			this.image = ImageIO.read(Background.class.getResource("/res/book.png"));
 			this.image = this.image.getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_FAST);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

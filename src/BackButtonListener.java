@@ -1,7 +1,6 @@
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -22,7 +21,7 @@ public class BackButtonListener implements MouseListener{
 		
 		Image image = null;
 		try {
-			image = ImageIO.read(new File("./res/arrow_back_clicked.png"));
+			image = ImageIO.read(BackButtonListener.class.getResource("/res/arrow_back_clicked.png"));
 			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
@@ -38,7 +37,7 @@ public class BackButtonListener implements MouseListener{
 		
 		Image image = null;
 		try {
-			image = ImageIO.read(new File("./res/arrow_back.png"));
+			image = ImageIO.read(BackButtonListener.class.getResource("/res/arrow_back.png"));
 			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
@@ -54,7 +53,7 @@ public class BackButtonListener implements MouseListener{
 		
 		Image image = null;
 		try {
-			image = ImageIO.read(new File("./res/arrow_back_selected.png"));
+			image = ImageIO.read(BackButtonListener.class.getResource("/res/arrow_back_selected.png"));
 			image = image.getScaledInstance(90, 130, Image.SCALE_FAST);
 		} catch (IOException ex) {
 			// TODO Auto-generated catch block
