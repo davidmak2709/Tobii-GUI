@@ -10,7 +10,8 @@ import javax.swing.text.Highlighter;
 import javax.swing.text.Highlighter.HighlightPainter;
 
 import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
+import com.sun.speech.freetts.VoiceDirectory;
+import com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory;
 
 class Reader implements Runnable{
 	private Queue<String> buffer;
@@ -65,9 +66,16 @@ class Reader implements Runnable{
 		// TODO Auto-generated method stub
 		String words="";		
 		int size_of_buffer = 6;
-		Voice voice = VoiceManager.getInstance().getVoice("kevin16");
+		
+		VoiceDirectory vd = new KevinVoiceDirectory();
+		Voice[] voices = vd.getVoices();
+		
+		Voice voice = voices[0];
 		voice.allocate();
-//		voice.setRate(120);
+//		VoiceManager voiceManager = VoiceManager.getInstance();
+//		Voice voice = voiceManager.getVoice("kevin");
+//		voice.allocate();
+////		voice.setRate(120);
 
 		while(true) {
 			while(keepRunning()) {
@@ -87,7 +95,7 @@ class Reader implements Runnable{
 						this.current += w.length() + 1;		
 					}
 					this.highlight();
-					this.subtitle.setText("<html><center><b><font size=30>" + words.replace('\n', ' ') + "</font></b></center></html>");			
+					this.subtitle.setText("<html><center><b><font size=28>" + words.replace('\n', ' ') + "</font></b></center></html>");			
 				}
 				else {
 					this.doStop();

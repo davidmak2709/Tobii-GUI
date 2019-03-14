@@ -27,7 +27,6 @@ public class GUI extends JFrame {
 	
 	private String[] array;
 	private Thread thread;
-	private int iter = 0;
 	private Reader reader = null;
 	Queue<String> queue = new ConcurrentLinkedQueue<>();
 
